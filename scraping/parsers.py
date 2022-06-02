@@ -3,6 +3,8 @@ from  bs4 import BeautifulSoup as bs
 from random import randint
 __all__ = ('hh','uzjobble','ishkop')
 
+
+
 headers = [
     {'User-Agent': 'Mozilla/5.0 (Windows NT 5.1; rv:47.0) Gecko/20100101 Firefox/47.0',
         'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'},
@@ -123,6 +125,7 @@ def ishkop(url,city=None,language=None):
                     })
 
     return jobs,errors
+
 # urlhh='https://tashkent.hh.uz/search/vacancy?clusters=true&area=2759&ored_clusters=true&order_by=publication_time&enable_snippets=true&salary=&st=searchVacancy&text=python'
 # urlishkop="https://ishkop.uz/vacansii?q=python&l=Ташкент&df=3"
 # urluzjobble="https://uz.jooble.org/SearchResult?p=4&rgns=Ташкент&ukw=python"
