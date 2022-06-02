@@ -19,15 +19,11 @@ class findForm(forms.Form):
 
 
 class resume_form(UserChangeForm):
-    city = forms.ModelChoiceField(queryset=City.objects.all(), to_field_name='slug', required=False,
-                                  widget=forms.Select(attrs={'class': 'form-select'}))
-    language = forms.ModelChoiceField(queryset=Language.objects.all(), to_field_name='slug', required=False,
-                                      widget=forms.Select(attrs={'class': 'form-select'}))
 
     class Meta:
         model=Resume
-        fields=('name','phone_number','email','experience','education','city',
-                'language','skills','profession','telegram_link','linked','about_meu','adress')
+        fields=('name','phone_number','email','experience','education',
+                'skills','profession','telegram_link','linked','about_meu','adress')
 
 
 class DocumentForm(forms.ModelForm):

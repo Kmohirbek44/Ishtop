@@ -88,37 +88,39 @@ class L_List(ListView):
 
 
 def resume_create(request):
-    user=request.user
-    queryset=Resume()
+    user = request.user
+    queryset = Resume()
     if request.method == 'POST':
-        form= resume_form(request.POST or None)
-        if form.is_valid():
-            create=form.cleaned_data
-            queryset.email=user.email
-            queryset.city=create['city']
-            queryset.name=create['name']
-            queryset.language=create['language']
-            queryset.about_meu=create['about_meu']
-            queryset.adress=create['adress']
-            queryset.education=create['education']
-            queryset.phone_number=create['phone_number']
-            queryset.profession=create['profession']
-            queryset.skills=create['skills']
-            queryset.telegram_link=create['telegram_link']
-            queryset.linked=create['linked']
-            queryset.save()
+        form = resume_form(request.POST or None)
 
-            return HttpResponseRedirect(reverse('scraping:resume'))
+        email = user.email
 
+        name = request.POST['name']
 
+        about_meu = request.POST['about_meu']
+        adress = request.POST['adress']
+        education = request.POST['education']
+        phone_number = request.POST['phone_number']
+        profession = request.POST['profession']
+        skills = request.POST['skills']
+        telegram_link = request.POST['telegram_link']
+        linked = request.POST['linked']
+        res = Resume(email=email, name=name, about_meu=about_meu, adress=adress, education=education,
+                     phone_number=phone_number, profession=profession, skills=skills, telegram_link=telegram_link,
+                     linked=linked)
+        res.save()
 
         return HttpResponseRedirect(reverse('scraping:resume'))
 
 
 
+
+
+
+
     else:
 
-        form= resume_form()
+        form = resume_form()
     context = {'form': form}
 
     return render(request, 'accounts/resume_create.html', context)

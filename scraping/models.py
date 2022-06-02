@@ -64,22 +64,20 @@ class Urls(models.Model):
         verbose_name_plural='Urls'
 
 class Resume(models.Model):
-    name = models.CharField(max_length=128)
-    profession=models.CharField(max_length=128)
-    phone_number = models.CharField(max_length=128,default='+998')
+    name = models.CharField(max_length=256)
+    profession=models.CharField(max_length=256)
+    phone_number = models.CharField(max_length=256,default='+998')
     email=models.EmailField(unique=False)
-    adress=models.CharField(max_length=128)
+    adress=models.CharField(max_length=256)
     experience=models.TextField()
     education = models.TextField()
     skills=models.TextField()
     about_meu=models.TextField()
-    city = models.ForeignKey('City', on_delete=models.CASCADE, blank=True)
-    language = models.ForeignKey('Language', on_delete=models.CASCADE, blank=True)
-    telegram_link=models.CharField(max_length=128,blank=True)
-    linked = models.CharField(max_length=128, blank=True)
+    telegram_link=models.CharField(max_length=256,blank=True)
+    linked = models.CharField(max_length=256, blank=True)
 
 
 class Document(models.Model):
-    description = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=256, blank=True)
     document = models.FileField(upload_to='documents/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
