@@ -91,7 +91,7 @@ def resume_create(request):
     user = request.user
     queryset = Resume()
     if request.method == 'POST':
-        form = resume_form(request.POST or None)
+
 
         email = user.email
 
@@ -100,6 +100,7 @@ def resume_create(request):
         about_meu = request.POST['about_meu']
         adress = request.POST['adress']
         education = request.POST['education']
+        experience=request.POST['experience']
         phone_number = request.POST['phone_number']
         profession = request.POST['profession']
         skills = request.POST['skills']
@@ -107,7 +108,7 @@ def resume_create(request):
         linked = request.POST['linked']
         res = Resume(email=email, name=name, about_meu=about_meu, adress=adress, education=education,
                      phone_number=phone_number, profession=profession, skills=skills, telegram_link=telegram_link,
-                     linked=linked)
+                     linked=linked,experience=experience)
         res.save()
 
         return HttpResponseRedirect(reverse('scraping:resume'))
@@ -132,14 +133,30 @@ def resume_edit(request):
 
     if request.method == 'POST':
 
-        form = resume_form(instance=data)
+        form = resume_form(request.POST,instance=data)
 
         if form.is_valid():
-            form.save()
+            email = user.email
+
+            name = request.POST['name']
+
+            about_meu = request.POST['about_meu']
+            adress = request.POST['adress']
+            education = request.POST['education']
+            experience = request.POST['experience']
+            phone_number = request.POST['phone_number']
+            profession = request.POST['profession']
+            skills = request.POST['skills']
+            telegram_link = request.POST['telegram_link']
+            linked = request.POST['linked']
+            res = Resume(email=email, name=name, about_meu=about_meu, adress=adress, education=education,
+                         phone_number=phone_number, profession=profession, skills=skills, telegram_link=telegram_link,
+                         linked=linked, experience=experience)
+            res.save()
+            a=Resume.objects.filter(email=user.email).first()
+            a.delete()
             return HttpResponseRedirect(reverse('scraping:resume'))
-        else:
-            form.save()
-            return HttpResponseRedirect(reverse('scraping:resume'))
+
 
     else:
         form = resume_form(instance=data)
