@@ -68,3 +68,4 @@ for job in jobs:
     except DatabaseError:
         pass
 
+send()

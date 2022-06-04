@@ -73,4 +73,3 @@ def send():
                 mail.sendmail(from_email, to, msg.as_string())
                 mail.quit()
 # a=1
-send()
