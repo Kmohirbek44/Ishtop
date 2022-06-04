@@ -67,5 +67,5 @@ for job in jobs:
         v.save()
     except DatabaseError:
         pass
-
+from send_email import send
 send()
