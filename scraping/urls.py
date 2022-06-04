@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from .views import scraping_home, L_List, resume_edit, resume, resume_list, resume_home, GeneratePdf, model_form_upload, \
+from .views import scraping_home, L_List, resume_edit, resume, resume_list, resume_home,  model_form_upload, \
     resume_create
 
 app_name = 'scraping'

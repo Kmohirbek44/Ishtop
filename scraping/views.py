@@ -10,24 +10,10 @@ from django.conf import settings
 from .models import Vakation, Resume, Document
 
 from .form import findForm, resume_form,  DocumentForm
-from django.http import HttpResponse
-from django.views.generic import View
 
 
 
-# Creating a class based view
-from django.http import HttpResponse
-from django.views.generic import View
 
-from .utils import render_to_pdf #created in step 4
-
-
-
-class GeneratePdf(View):
-    def get(self, request, *args, **kwargs):
-        data={}
-        pdf = render_to_pdf('accounts/resume.html')
-        return HttpResponse(pdf, content_type='application/pdf')
 def scraping_home(request):
     form = findForm()
     city = request.GET.get('city')
