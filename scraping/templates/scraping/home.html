@@ -54,12 +54,18 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<br>
+
 <div class="row">
     <div class="col-md-6 mx-auto">
         <form action="" method="get">
 
-    {{ form.as_p }}
+
+     <label class="small mb-1" for="{{form.city.id_for_label}}">Shahar_yoki_viloyat</label>
+                                                {{form.city}}
+            <br>
+                 <label class="small mb-1" for="{{form.language.id_for_label}}">Ish</label>
+                                                {{form.language}}
+            <br>
     <input type="submit" class="btn btn-primary" value="Qidirish">
 </form>
     </div>
