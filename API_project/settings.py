@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os.path
 import os
 import sys
-import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,7 +29,7 @@ SECRET_KEY ='django-insecure-!2bk-5=(9zv)ysu4nsq*dd6%ug%hj5+5jb9a)omt(%hdov00p9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['178.128.196.206', 'localhost', '127.0.0.1', 'iishtop.uz', 'www.iishtop.uz' ]
 
 
 # Application definition
@@ -104,17 +103,15 @@ WSGI_APPLICATION = 'API_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'darqb78bjts6ae',
-        'USER':'uhakxhfaegvclu',
-        'PASSWORD':'a0f61fc7e7513109841ff9a145b439d966f9f9509b7929ba503633295a8daf0e',
-        'HOST':'ec2-52-18-116-67.eu-west-1.compute.amazonaws.com',
-        'PORT':'5432',
+        'NAME': 'defaultdb',
+        'USER':'doadmin',
+        'PASSWORD':'AVNS_J9tRHuEHERlO0yx',
+        'HOST':'my-database-ubuntu-do-user-11742095-0.b.db.ondigitalocean.com',
+        'PORT':'25060',
 
     }
 }
 
-db=dj_database_url.config()
-DATABASES['default'].update(db)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -140,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
