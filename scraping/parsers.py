@@ -129,11 +129,11 @@ def ishkop(url,city=None,language=None):
 
     return jobs,errors
 
-urlhh='https://tashkent.hh.uz/search/vacancy?clusters=true&area=2759&ored_clusters=true&order_by=publication_time&enable_snippets=true&salary=&st=searchVacancy&text=python'
-urlishkop="https://ishkop.uz/vacansii?q=python&l=Ташкент&df=3"
-urluzjobble="https://uz.jooble.org/SearchResult?p=4&rgns=Ташкент&ukw=python"
-h=hh(urlhh)
-ish=ishkop(urlishkop)
-uz=uzjobble(urluzjobble)
-print(uz)
+# urlhh='https://tashkent.hh.uz/search/vacancy?clusters=true&area=2759&ored_clusters=true&order_by=publication_time&enable_snippets=true&salary=&st=searchVacancy&text=python'
+# urlishkop="https://ishkop.uz/vacansii?q=python&l=Ташкент&df=3"
+# urluzjobble="https://uz.jooble.org/SearchResult?p=4&rgns=Ташкент&ukw=python"
+# h=hh(urlhh)
+# ish=ishkop(urlishkop)
+# uz=uzjobble(urluzjobble)
+# print(uz)
 
