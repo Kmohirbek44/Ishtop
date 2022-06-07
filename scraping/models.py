@@ -21,12 +21,12 @@ class City(models.Model):
 
 
 class Language(models.Model):
-    name = models.CharField(max_length=50, verbose_name='dasturlash tili')
+    name = models.CharField(max_length=50, verbose_name='Ishlar')
     slug = models.CharField(max_length=50,blank=True)
 
     class Meta:
-        verbose_name_plural = 'dasturlash tillari'
-        verbose_name = 'dasturlash tili'
+        verbose_name_plural = 'Ishlar'
+        verbose_name = 'Ishlar'
 
     def __str__(self):
         return self.name

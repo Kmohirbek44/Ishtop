@@ -45,7 +45,7 @@ class ContactForm(forms.Form):
     username = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}), label='Username')
     class Meta:
         model=MyUser
-        field=('city','language','send_email','username')
+        field=('city','language','email','username')
 
 class UserUpdateForm(forms.Form):
     city = forms.ModelChoiceField(queryset=models.City.objects.all(), to_field_name='slug', required=True,

@@ -95,6 +95,7 @@ def uzjobble(url,city=None,language=None):
 
 def ishkop(url,city=None,language=None):
     total_url='https://ishkop.uz/viewjob?'
+    add_url='&src=js&sid=EXxoW7VH2ghBPm73bpBQQqVjMoz7MolU'
     jobs = []
     errors = []
     if url:
@@ -105,12 +106,14 @@ def ishkop(url,city=None,language=None):
             if main_div:
 
                  vacations=main_div.find_all('article','job no-logo')
+
                  for vacation in vacations:
                      title_and_url=vacation.find('h2','title').find_next('a')
-
+                     href=title_and_url.get('href')
+                     url_v = href[7:]
 
                      jobs.append({
-                        'url':total_url+title_and_url.get('href'),
+                        'url':total_url+url_v+add_url,
 
                         'title': title_and_url.get_text(),
                         'company':vacation.find('div','company-job-data').get_text(),
@@ -126,10 +129,11 @@ def ishkop(url,city=None,language=None):
 
     return jobs,errors
 
-# urlhh='https://tashkent.hh.uz/search/vacancy?clusters=true&area=2759&ored_clusters=true&order_by=publication_time&enable_snippets=true&salary=&st=searchVacancy&text=python'
-# urlishkop="https://ishkop.uz/vacansii?q=python&l=Ташкент&df=3"
-# urluzjobble="https://uz.jooble.org/SearchResult?p=4&rgns=Ташкент&ukw=python"
-# h=hh(urlhh)
-# ish=ishkop(urlishkop)
-# uzjobble(urluzjobble)
+urlhh='https://tashkent.hh.uz/search/vacancy?clusters=true&area=2759&ored_clusters=true&order_by=publication_time&enable_snippets=true&salary=&st=searchVacancy&text=python'
+urlishkop="https://ishkop.uz/vacansii?q=python&l=Ташкент&df=3"
+urluzjobble="https://uz.jooble.org/SearchResult?p=4&rgns=Ташкент&ukw=python"
+h=hh(urlhh)
+ish=ishkop(urlishkop)
+uz=uzjobble(urluzjobble)
+print(uz)
 

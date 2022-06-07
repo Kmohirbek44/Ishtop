@@ -4,6 +4,8 @@ import os, sys
 from django.contrib.auth import get_user_model
 from django.db import DatabaseError
 
+
+
 proj = os.path.dirname(os.path.abspath('manage.py'))
 
 sys.path.append(proj)
@@ -26,8 +28,9 @@ User = get_user_model()
 
 
 def get_user():
-    qs = User.objects.filter(send_email=True).values()
-    settings_lst = set((q['city_id'], q['language_id']) for q in qs)
+    city = scraping.models.City.objects.all().values()
+    language = scraping.models.Language.objects.all().values()
+    settings_lst = set((c['id'], l['id']) for c in city for l in language)
     return settings_lst
 
 

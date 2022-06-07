@@ -80,8 +80,13 @@
               <h5 class="card-title text-center">Emailingizga yangi vakansiyalar haqidagi habar birinchilardan bolip kelishini istasangiz send email ni yoqing va siz hohlagan vacansiya turini tanlang</h5>
             <form action="{%url 'accounts:choice'%}" method="POST">{% csrf_token %}
 
-        {{ formuser.as_p }}
-        <input type="submit" class="btn btn-primary" value="emailga xabar yuborishni yoqing">
+            <label class="small mb-1" for="{{formuser.city.id_for_label}}">Shahar_yoki_viloyat</label>
+                                                {{formuser.city}}
+            <br>
+                 <label class="small mb-1" for="{{formuser.language.id_for_label}}">Ishlar yo'nalishlari</label>
+                                                {{formuser.language}}
+            <br>
+        <input type="submit" class="btn btn-primary" value="emailga xabar yuborish">
     </form>
 
 
@@ -94,10 +99,26 @@
         <br>
         <br>
             <h5 class="card-title text-center">Agar siz istagan shahar yoki kasb kiritilmagan bolsa adminga sorov jonatishingiz mumkun</h5>
-            <form action="{% url 'accounts:contact'%}" method="POST">{% csrf_token %}
 
-        {{ ContactForm.as_p }}
-        <input type="submit" class="btn btn-primary" value="submit">
+
+         <form action="{%url 'accounts:contact'%}" method="POST">{% csrf_token %}
+
+            <label class="small mb-1" for="{{ContactForm.city.id_for_label}}">Shahar_yoki_viloyat</label>
+                                                {{ContactForm.city}}
+            <br>
+                 <label class="small mb-1" for="{{ContactForm.language.id_for_label}}">Ishlar yo'nalishlari</label>
+                                                {{ContactForm.language}}
+            <br>
+             <label class="small mb-1" for="{{ContactForm.id_for_label}}">Email</label>
+                                                {{ContactForm.email}}
+            <br>
+                 <label class="small mb-1" for="{{ContactForm.username.id_for_label}}">Username</label>
+                                                {{ContactForm.username}}
+            <br>
+
+
+
+        <input type="submit" class="btn btn-primary" value="Yuborish">
 
 
             </form>
@@ -106,6 +127,11 @@
 
     </div>
 
+        </div>
+    <br>
+    <br>
+    <br>
+        <h3>Accountni o'chirish</h3>
         <div>
               <form action="{% url 'accounts:delete' %} " method="POST">{% csrf_token %}
 
@@ -113,6 +139,5 @@
         <input type="submit" class="btn btn-danger" value="Profileni ochirish">
     </form>
 
-        </div>
 
 {% endblock %}
