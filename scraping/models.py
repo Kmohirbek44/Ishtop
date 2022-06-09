@@ -1,6 +1,6 @@
 import jsonfield
 from django.db import models
-
+from .validators import validate_file_size
 
 from .utils import from_cryillic_to_eng
 def default_urls():
@@ -79,5 +79,6 @@ class Resume(models.Model):
 
 class Document(models.Model):
     description = models.CharField(max_length=256, blank=True)
-    document = models.FileField(upload_to='documents/')
+    document =models.FileField(validators=[validate_file_size])
+
     uploaded_at = models.DateTimeField(auto_now_add=True)
