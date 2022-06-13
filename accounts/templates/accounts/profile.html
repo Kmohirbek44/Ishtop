@@ -13,7 +13,7 @@
 
             <div class="col-lg-12 text-center" >
                 <img width="100" height="100"
-                     src="{%if user.image%}{{user.image.url}}{%else%}{%static 'vendor\img\users\user.jpg'%}{%endif%}"
+                     src="{%if user.image%}{{user.image.url}}{%else%}{%static 'vendor\img\users\.jpg'%}{%endif%}"
                      class="img-thumbnail">
             </div>
             <form action="{%url 'accounts:update'%}" method="post" enctype="multipart/form-data">
@@ -43,8 +43,16 @@
                         <label class="small mb-1" for="{{formone.email.id_for_label}}">Elektron pochta adresi</label>
                         {{formone.email}}
 
-                    <div class="row">
-                        <div class="col-md-12 mx-auto">
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label class="small mb-1" for="{{formone.Rezume.id_for_label}}">Rezumeni ko'rish</label>
+                        {{formone.Rezume}}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-lg-12" style="margin-top: 33px;">
                         <input class="btn btn-info btn-block" type="submit" value="O'zgartirish">
                     </div>
 
@@ -52,14 +60,10 @@
                 </div>
             </form>
             <br>
-            <div>
-                {% if resume_check %}
-                        <a class='btn btn-primary' href="{% url  'scraping:resume_edit' %} ">Resumeyingizni o'zgartirish </a>
-                        <p></p>
-                       <a class='btn btn-primary' href="{% url  'scraping:resume' %} ">Resume </a>
-                {% elif not resume_check %}
-                        <a href="{%url 'scraping:resume_create'%}" class='btn btn-primary'>Resume yaratish</a>
-                {%endif%}
+             <div>
+              <a href="{%url 'scraping:resume_edit'%}" class='btn btn-primary'>Resume yaratish</a>
+
+
         </div>
 
 
@@ -69,16 +73,11 @@
         <div class="col-md-6 mx-auto">
             <br>
 
-              <h5 class="card-title text-center">Emailingizga yangi vakansiyalar haqidagi xabar birinchilardan bolip kelishini istasangiz emailga xabar yuborish ni yoqing va siz hohlagan vacansiya turini tanlang</h5>
+              <h5 class="card-title text-center">Emailingizga yangi vakansiyalar haqidagi xabar birinchilardan bolip kelishini istasangiz send_email ni belgilang</h5>
             <form action="{%url 'accounts:choice'%}" method="POST">{% csrf_token %}
 
-            <label class="small mb-1" for="{{formuser.city.id_for_label}}">Shahar_yoki_viloyat</label>
-                                                {{formuser.city}}
-            <br>
-                 <label class="small mb-1" for="{{formuser.language.id_for_label}}">Ishlar yo'nalishlari</label>
-                                                {{formuser.language}}
-            <br>
-        <input type="submit" class="btn btn-primary" value="emailga xabar yuborish">
+        {{ formuser.as_p }}
+        <input type="submit" class="btn btn-primary" value="yoqish">
     </form>
 
 
@@ -91,26 +90,10 @@
         <br>
         <br>
             <h5 class="card-title text-center">Agar siz istagan shahar yoki kasb kiritilmagan bolsa adminga sorov jonatishingiz mumkun</h5>
+            <form action="{% url 'accounts:contact'%}" method="POST">{% csrf_token %}
 
-
-         <form action="{%url 'accounts:contact'%}" method="POST">{% csrf_token %}
-
-            <label class="small mb-1" for="{{ContactForm.city.id_for_label}}">Ish qidirayotgan hududingiz</label>
-                                                {{ContactForm.city}}
-            <br>
-                 <label class="small mb-1" for="{{ContactForm.language.id_for_label}}">Ishlar yo'nalishlari</label>
-                                                {{ContactForm.language}}
-            <br>
-             <label class="small mb-1" for="{{ContactForm.id_for_label}}">Email</label>
-                                                {{ContactForm.email}}
-            <br>
-                 <label class="small mb-1" for="{{ContactForm.username.id_for_label}}">Username</label>
-                                                {{ContactForm.username}}
-            <br>
-
-
-
-        <input type="submit" class="btn btn-primary" value="Yuborish">
+        {{ ContactForm.as_p }}
+        <input type="submit" class="btn btn-primary" value="submit">
 
 
             </form>
@@ -119,11 +102,6 @@
 
     </div>
 
-        </div>
-    <br>
-    <br>
-    <br>
-        <h3>Accountni o'chirish</h3>
         <div>
               <form action="{% url 'accounts:delete' %} " method="POST">{% csrf_token %}
 
@@ -131,5 +109,6 @@
         <input type="submit" class="btn btn-danger" value="Profileni ochirish">
     </form>
 
+        </div>
 
 {% endblock %}
